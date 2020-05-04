@@ -15,7 +15,10 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class Cour implements Serializable {
 
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -48,38 +51,23 @@ public class Cour implements Serializable {
 	public Cour() {
 		
 	}
-	public Long getIdCour() {
-		return idCour;
-	}
-	public void setIdCour(Long idCour) {
-		this.idCour = idCour;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
+	
+	public Cour(String title, String auteur, String name, String mimetype, byte[] pic) {
+		super();
 		this.title = title;
-	}
-
-
-	public String getAuteur() {
-		return auteur;
-	}
-	public void setAuteur(String auteur) {
 		this.auteur = auteur;
+		this.name = name;
+		this.mimetype = mimetype;
+		this.pic = pic;
 	}
+	
 	public Cour(String title,String auteur, TypeCour type) {
 		super();
 		this.title = title;
 		this.auteur = auteur;
 		this.type = type;
 	}
-	public TypeCour getType() {
-		return type;
-	}
-	public void setType(TypeCour type) {
-		this.type = type;
-	}
+	
 	public Cour(String title, String auteur, String name, String mimetype, byte[] pic, TypeCour type) {
 		super();
 		this.title = title;
@@ -89,24 +77,9 @@ public class Cour implements Serializable {
 		this.pic = pic;
 		this.type = type;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getMimetype() {
-		return mimetype;
-	}
-	public void setMimetype(String mimetype) {
-		this.mimetype = mimetype;
-	}
-	public byte[] getPic() {
-		return pic;
-	}
-	public void setPic(byte[] pic) {
-		this.pic = pic;
-	}
+
+
+	
 
 	
 	

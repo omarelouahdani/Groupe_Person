@@ -6,20 +6,24 @@ import java.util.Optional;
 import javax.sound.midi.Soundbank;
 
 import org.sid.dao.AdminRepository;
+import org.sid.dao.CourRepository;
 import org.sid.dao.EcoleRepository;
 import org.sid.dao.FiliereRepository;
 import org.sid.dao.LoginRepository;
 import org.sid.dao.ProfilRepository;
 import org.sid.dao.PromoRepository;
 import org.sid.dao.RSRepository;
+import org.sid.dao.TypeCourRepisitory;
 import org.sid.dao.UtilisateurRepository;
 import org.sid.entities.Admin;
+import org.sid.entities.Cour;
 import org.sid.entities.Ecole;
 import org.sid.entities.Filiere;
 import org.sid.entities.Login;
 import org.sid.entities.Profil;
 import org.sid.entities.Promo;
 import org.sid.entities.RS;
+import org.sid.entities.TypeCour;
 import org.sid.entities.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -45,6 +49,10 @@ public class GroupePersonnelApplication  implements CommandLineRunner {
 	FiliereRepository filierRepository;
 	@Autowired
 	PromoRepository promoRepository;
+	@Autowired
+	TypeCourRepisitory typeCourRepisitory;
+	@Autowired
+	CourRepository courRepository;
 	
 	
 	public static void main(String[] args) {
@@ -92,6 +100,15 @@ public class GroupePersonnelApplication  implements CommandLineRunner {
 		    		System.out.println(e.getLien());
 		    		
 		    	});
+		    	List<TypeCour> crs   = typeCourRepisitory.findAll();
+		    	crs.forEach(e  -> {
+		    		System.out.println(e.getDesignation());
+		    	});
+		    	Cour  cour = courRepository.findById((long) 2).get();
+		    	System.out.println(cour.getName());
+		    	System.out.println(cour.getType().getDesignation());
+		    	
+		    	
 	}	
     
 

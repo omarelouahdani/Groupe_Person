@@ -10,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-@Entity
+
+import lombok.AllArgsConstructor;
+@Entity @AllArgsConstructor
 public class TypeCour implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTypeCour;
@@ -20,6 +22,7 @@ public class TypeCour implements Serializable{
 	public TypeCour() {
 
 	}
+	
 	public TypeCour(String designation) {
 
 	this.designation = designation;
