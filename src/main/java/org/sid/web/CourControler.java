@@ -66,7 +66,7 @@ public class CourControler {
 		
     }
 	@GetMapping(path = "/user/CourRecherche")
-    public String courRecherche(Model model,@RequestParam(name = "TypeCour",defaultValue = "") long  id) {
+    public String courRecherche(Model model,@RequestParam(name = "TypeCour",defaultValue = "2") long  id) {
 	   
 		List<TypeCour> crs   = typeCourRepisitory.findAll();
 		
