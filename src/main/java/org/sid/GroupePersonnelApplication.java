@@ -2,6 +2,7 @@ package org.sid;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,53 +72,17 @@ public class GroupePersonnelApplication  implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
-	Profil prf = profileRepository.findById((long) 1).get();
+
+		List<Cour> cours = courRepository.findByid_TypeCour((long)2);
 	
-	System.out.println(prf.getDescription());
-	Profil pr = profileRepository.findByDescription("%ELOUAHDANI");
-	System.out.println(prf.getDescription());
-	Utilisateur utl = utilisateurRepository.findByid_Profil((long ) 1);
-	System.out.println(utl.getNom());
-	System.out.println(utl.getPrenom());
-	System.out.println(utl.getProfil().getTelephone());
-	System.out.println(utl.getCompte().getCIN());
-	System.out.println(utl.getFiliere().getNom());
-	System.out.println(utl.getPromo().getDat_ent());
-	List<RS> rs  =  rsRepository.findByid_Profil((long) 1);
-	rs.forEach(e -> {
-		System.out.println(e.getLien());
-	});
-	Filiere filiere = filierRepository.findByNom("GLSID");
-	
-			System.out.println(filiere.getNom());
 		
-			Utilisateur ut = utilisateurRepository.findById((long) 4).get();
-			System.out.println(utl.getProfil().getTelephone());	 
-			String[] date_ent=utl.getPromo().getDat_ent().toString().split("-"); 
-			 String dt_ent=date_ent[0];
-			 String[] date_sort=utl.getPromo().getDat_srt().toString().split("-"); 
-			 String	  dt_srt=date_sort[0]; 
-			 String promo=dt_ent + "-" +dt_srt;
-			 System.out.println(promo);
-				String[]  aniv=utl.getCompte().getDateNaissance().toString().split("-");
-		        String[] s = aniv[2].split(" ");
-		    	String date_aniv=aniv[1] + "-" +s[0];
-		    	System.out.println(date_aniv);
-		    	System.out.println(ut.getProfil().getIdProfil());
-		    	List<RS> reseau_sociaux = rsRepository.findByid_Profil(ut.getProfil().getIdProfil());
-		    	reseau_sociaux.forEach(e -> {
-		    		System.out.println(e.getLien());
-		    		
-		    	});
-		    	List<TypeCour> crs   = typeCourRepisitory.findAll();
-		    	crs.forEach(e  -> {
-		    		System.out.println(e.getDesignation());
-		    	});
-		    	Cour  cour = courRepository.findById((long) 2).get();
-		    	System.out.println(cour.getName());
-		    	System.out.println(cour.getType().getDesignation());
-		    	
-		    	
+        cours.forEach(e -> {
+        
+        	System.out.println(e.getAuteur());
+        });
+	   
+	    	
+	
 		    	
 		    	
 	}	

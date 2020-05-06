@@ -1,5 +1,7 @@
 package org.sid.web;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,6 +15,7 @@ import org.sid.entities.TypeCour;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,11 +34,22 @@ public class CourControler {
     public String edit(Model model) {
 	   
 		List<TypeCour> crs   = typeCourRepisitory.findAll();
-		model.addAttribute("coursType",crs);
+		
 		List<Cour> cours = courRepository.findAll();
+		List<String> images = new ArrayList<String>();
+		
+
+		cours.forEach(e -> {
+        	if(e.getTitle().contains("JEE"))
+        	{
+        		images.add("jee.jpg");
+        	}
+          });
+	   
+	    	
 		model.addAttribute("cours",cours);
-		
-		
+		model.addAttribute("coursType",crs);
+		model.addAttribute("images",images);
 		
 		return "/user/PageCour";
     }
@@ -50,6 +64,29 @@ public class CourControler {
 		
 		
 		
+    }
+	@GetMapping(path = "/user/CourRecherche")
+    public String courRecherche(Model model,@RequestParam(name = "TypeCour",defaultValue = "") long  id) {
+	   
+		List<TypeCour> crs   = typeCourRepisitory.findAll();
+		
+		List<Cour> cours = courRepository.findByid_TypeCour(id);
+		List<String> images = new ArrayList<String>();
+		
+
+		cours.forEach(e -> {
+        	if(e.getTitle().contains("JEE"))
+        	{
+        		images.add("jee.jpg");
+        	}
+          });
+	   
+	    	
+		model.addAttribute("cours",cours);
+		model.addAttribute("coursType",crs);
+		model.addAttribute("images",images);
+		
+		return "/user/PageCour";
     }
 	
 	

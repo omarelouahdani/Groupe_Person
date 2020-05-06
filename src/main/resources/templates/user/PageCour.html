@@ -134,7 +134,7 @@
            
            <div style="font-size: 20px;" th:each="r:${coursType}"  >
            
-                <a class="dropdown-item" href="#" style="font-size: 18px;font-weight: bold;">
+                <a class="dropdown-item" th:href="@{/user/CourRecherche(id=${r.idTypeCour})}" style="font-size: 18px;font-weight: bold;">
                   
                   <label th:text="${r.designation}"></label> 
                 </a>
@@ -176,7 +176,10 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
           </ol>
           <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active"  style="height: 300px;">
+            <div class="carousel-item active" style="height: 300px;">
+              <img class="d-block img-fluid" src="/img/img33.jpg" alt="Third slide" width="900px;">
+            </div>
+            <div class="carousel-item"  style="height: 300px;">
               <p style="font-size: 26px;font-weight: bold;font-family: monospace;color: black;padding: 120px;">    عن أبي هريرة  رضي الله عنه   قال: قال رسول الله صلى الله عليه وسلم  : ومَن سلك طريقًا يَلتمِس فيه عِلمًا، سهَّل الله له به طريقًا إلى الجنة  </p>
             </div>
             <div class="carousel-item"  style="height: 300px;">
@@ -185,9 +188,7 @@
             <div class="carousel-item" style="height: 300px;">
               <img class="d-block img-fluid" src="/img/img22.png" alt="Third slide" width="900px;">
             </div>
-            <div class="carousel-item" style="height: 300px;">
-              <img class="d-block img-fluid" src="/img/img33.jpg" alt="Third slide" width="900px;">
-            </div>
+          
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -203,7 +204,7 @@
 
           <div class="col-lg-4 col-md-6 mb-4" th:each="r:${cours}" >
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="/img/im7.jpg" alt=""></a>
+              <a th:href="@{/user/downloadFile(cour=${r.idCour})}"><img class="card-img-top"  src="/img/jee.jpg"  alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a th:href="@{/user/downloadFile(cour=${r.idCour})}"><label th:Text="${r.title}"></label></a>
