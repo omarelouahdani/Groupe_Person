@@ -1,10 +1,15 @@
 package org.sid;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
 import javax.sound.midi.Soundbank;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.sid.dao.AdminRepository;
 import org.sid.dao.CourRepository;
 import org.sid.dao.EcoleRepository;
@@ -29,6 +34,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 @SpringBootApplication
 public class GroupePersonnelApplication  implements CommandLineRunner {
@@ -107,6 +116,8 @@ public class GroupePersonnelApplication  implements CommandLineRunner {
 		    	Cour  cour = courRepository.findById((long) 2).get();
 		    	System.out.println(cour.getName());
 		    	System.out.println(cour.getType().getDesignation());
+		    	
+		    	
 		    	
 		    	
 	}	
